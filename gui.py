@@ -20,12 +20,13 @@ def w_zdjecie():
     label2.pack()
 
 
-
-   # zapis = tkinter.Button(window2, text="zapisz",command= ).pack()
-
-
+    zapis = tkinter.Button(window2, text="zapisz", command= lambda : cv2.imwrite(filedialog.asksaveasfilename(filetypes=(
+        ('JPEG', ('*.jpg', '*.jpeg', '*.jpe')), ('PNG', '*.png'), ('BMP', ('*.bmp', '*.jdib')), ('GIF', '*.gif'))),img) )
+    zapis.pack()
 
     window2.mainloop()
+    window2.destroy()
+    cv2.destroyAllWindows()
 
 
 
