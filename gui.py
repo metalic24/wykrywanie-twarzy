@@ -6,6 +6,7 @@ from tkinter import *
 from tkinter import filedialog
 from PIL import Image, ImageTk
 
+#TODO zaby te okna jako tako wygladały
 
 def w_zdjecie():
     path = filedialog.askopenfilename()
@@ -15,22 +16,25 @@ def w_zdjecie():
 
 
     window2 = Tk()
-
+    window2.geometry("480x320")
+    window2.title("zapisz obraz")
     label2 = tkinter.Label(window2,text="Czy chcesz zapisać obraz?")
     label2.pack()
 
 
-    zapis = tkinter.Button(window2, text="zapisz", command= lambda : cv2.imwrite(filedialog.asksaveasfilename(filetypes=(
-        ('JPEG', ('*.jpg', '*.jpeg', '*.jpe')), ('PNG', '*.png'), ('BMP', ('*.bmp', '*.jdib')), ('GIF', '*.gif'))),img) )
+    zapis = tkinter.Button(window2, text="zapisz", command= lambda : zapisz_zdj(img,window2) )
     zapis.pack()
 
     window2.mainloop()
-    window2.destroy()
+
+
+
+def zapisz_zdj(img,window):
+    #zapisanie obrazu
+    cv2.imwrite(filedialog.asksaveasfilename(filetypes=(
+    ('JPEG', ('*.jpg', '*.jpeg', '*.jpe')), ('PNG', '*.png'), ('BMP', ('*.bmp', '*.jdib')), ('GIF', '*.gif'))), img)
+    window.destroy()
     cv2.destroyAllWindows()
-
-
-
-
 
 window = Tk()
 window.geometry("480x320")
