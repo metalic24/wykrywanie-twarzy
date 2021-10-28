@@ -18,8 +18,10 @@ def w_zdjecie():
 
     label2 = tkinter.Label(window2,text="Czy chcesz zapisać obraz?")
     label2.pack()
-    #todo zapisz
-    #zapis = tkinter.Button(window2, text="zapisz",command= lambda zapisz()).pack()
+
+
+
+   # zapis = tkinter.Button(window2, text="zapisz",command= ).pack()
 
 
 

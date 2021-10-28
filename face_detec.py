@@ -14,7 +14,7 @@ def camera():
 
 
     while True:
-        # Capture frame-by-frame
+
         ret, frame = cap.read()
         rgb_frame = frame[:, :, ::-1]
         face_locations = face_recognition.face_locations(rgb_frame)
@@ -23,6 +23,7 @@ def camera():
             break
 
         img = cv2.imread("C:/Users/Mati/Pictures/myszka.png",-1)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGBA)
         for top, right, bottom, left in face_locations:
 
             a=(right-left)
@@ -30,7 +31,7 @@ def camera():
             img =  cv2.resize(img, (a, b))
 
             #usunięcie kanału alpha
-            img = cv2.cvtColor(img, cv2.COLOR_BGR2RGBA)
+
 
             alpha_img = img[:, :, 3] / 255.0
             alpha_frame = 1.0 - alpha_img
@@ -53,17 +54,17 @@ def zdjecie(path):
 
     image = cv2.imread(path)
     face_locations = face_recognition.face_locations(image)
-    image2 = cv2.imread("C:/Users/Mati/Pictures/myszka.png",-1)
+    img = cv2.imread("C:/Users/Mati/Pictures/myszka.png",-1)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGBA)
 
     for top, right, bottom, left in face_locations:
         # cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
-        img = cv2.resize(image2, ((right - left), (bottom - top)))
+        img = cv2.resize(img, ((right - left), (bottom - top)))
 
 
         a = (right - left)
         b = (bottom - top)
 
-        img = cv2.cvtColor(img,cv2.COLOR_BGR2RGBA)
         alpha_img = img[:, :, 3] / 255.0
         alpha_image = 1.0 - alpha_img
 
