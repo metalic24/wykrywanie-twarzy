@@ -1,13 +1,13 @@
 import tkinter
 import cv2
-import numpy as np
 import face_detec
 from tkinter import *
 from tkinter import filedialog
-from PIL import Image, ImageTk
 
-#TODO zaby te okna jako tako wygladały
 
+
+
+#okno do zjecia
 def w_zdjecie():
     path = filedialog.askopenfilename()
     img = face_detec.zdjecie(path)
@@ -22,20 +22,27 @@ def w_zdjecie():
     label2.pack()
 
 
-    zapis = tkinter.Button(window2, text="zapisz", command= lambda : zapisz_zdj(img,window2) )
+    zapis = tkinter.Button(window2, text="tak", command= lambda : zapisz_zdj(img,window2) )
     zapis.pack()
+
+    nie_zapis = tkinter.Button(window2, text="nie", command=window2.destroy)
+    nie_zapis.pack()
+
 
     window2.mainloop()
 
 
-
+#zapis zdjecia w wybranym formacie (jako że wcześniej otwieraliśmy zdjęcie w jakimś folderze, to automatyznie przeniesie nas do tego folderu)
 def zapisz_zdj(img,window):
     #zapisanie obrazu
     cv2.imwrite(filedialog.asksaveasfilename(filetypes=(
     ('JPEG', ('*.jpg', '*.jpeg', '*.jpe')), ('PNG', '*.png'), ('BMP', ('*.bmp', '*.jdib')), ('GIF', '*.gif'))), img)
     window.destroy()
-    cv2.destroyAllWindows()
 
+
+
+
+#otwarcie programu
 window = Tk()
 window.geometry("480x320")
 window.title("Projekt 1")
@@ -49,6 +56,8 @@ button_zdjecie.pack()
 
 label2 = tkinter.Label(window, text="Neuronowy transfer stylów ")
 label2.pack()
+
+#to jeszcze będzie dorobione
 button_neuronowy = Button(window, text="Załaduj zdjęcia")
 button_neuronowy.pack()
 
