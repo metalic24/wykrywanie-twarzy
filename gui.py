@@ -1,9 +1,13 @@
 import tkinter
 import cv2
 import face_detec
+import  neuronowe
+from PIL import Image, ImageTk
 from tkinter import *
 from tkinter import filedialog
 
+window = Tk()
+label = tkinter.Label(window)
 
 
 
@@ -31,6 +35,18 @@ def w_zdjecie():
 
     window2.mainloop()
 
+def neuronowe_zdj():
+    path1 = filedialog.askopenfilename()
+    path2 = filedialog.askopenfilename()
+    img =  neuronowe.neuronowe_przetwarzarzanie(path1, path2)
+
+    #img.save("/temp/temp.jpg",".JPG")
+
+
+
+
+
+
 
 #zapis zdjecia w wybranym formacie (jako że wcześniej otwieraliśmy zdjęcie w jakimś folderze, to automatyznie przeniesie nas do tego folderu)
 def zapisz_zdj(img,window):
@@ -43,8 +59,8 @@ def zapisz_zdj(img,window):
 
 
 #otwarcie programu
-window = Tk()
-window.geometry("480x320")
+
+window.geometry("1000x1000")
 window.title("Projekt 1")
 label1 = tkinter.Label(window, text="Podmiana Twarzy")
 label1.pack()
@@ -58,7 +74,9 @@ label2 = tkinter.Label(window, text="Neuronowy transfer stylów ")
 label2.pack()
 
 #to jeszcze będzie dorobione
-button_neuronowy = Button(window, text="Załaduj zdjęcia")
+button_neuronowy = Button(window, text="Załaduj zdjęcia", command=neuronowe_zdj)
 button_neuronowy.pack()
+
+
 
 window.mainloop()
