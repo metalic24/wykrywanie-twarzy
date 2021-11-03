@@ -21,7 +21,8 @@ Jak korzystać z programu:
     Podobnie jak przy zamianie twarzy ze zdjęcia przerobiony obraz pojawi się w głównym oknie a pod nim przycisk do zapisu. Tak samo otworzy się okno dialogowe,
     w kórym będziemy mogli wybrać miejsce, nazwę i format zapisu.
     Czasami bedzie trzeba chwilkę zaczekać zanim pojawi się zdjęcie.
-    Nie wiem jak to będzie wyglądało przy komputerze z GPU, ponieważ u mnie jest zainstalowany tensorflow  w wersji CPU. 
+    Nie wiem jak to będzie wyglądało przy komputerze z GPU, ponieważ u mnie jest zainstalowany tensorflow  w wersji CPU.
+    W razie czego w folderze przykład jest przykładowe moje zdjęcie przerobione przy pomocy tej funkcji. 
 
 3.zakończenie programu
     zakończenie programu odbywa się poprzez zamknięcie głównego okna przyciskiem "X".
