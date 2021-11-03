@@ -1,4 +1,6 @@
 import tkinter
+
+import PIL
 import cv2
 import face_detec
 import  neuronowe
@@ -7,40 +9,38 @@ from tkinter import *
 from tkinter import filedialog
 
 window = Tk()
+global label
 label = tkinter.Label(window)
-
+img = None
 
 
 #okno do zjecia
 def w_zdjecie():
     path = filedialog.askopenfilename()
     img = face_detec.zdjecie(path)
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    img = ImageTk.PhotoImage(image=PIL.Image.fromarray(img))
 
-    cv2.imshow("zamienione", img)
-
-
-    window2 = Tk()
-    window2.geometry("480x320")
-    window2.title("zapisz obraz")
-    label2 = tkinter.Label(window2,text="Czy chcesz zapisać obraz?")
-    label2.pack()
+    label.config(image=img)
+    label.image = img
+    label.pack()
 
 
-    zapis = tkinter.Button(window2, text="tak", command= lambda : zapisz_zdj(img,window2) )
-    zapis.pack()
 
-    nie_zapis = tkinter.Button(window2, text="nie", command=window2.destroy)
-    nie_zapis.pack()
-
-
-    window2.mainloop()
 
 def neuronowe_zdj():
     path1 = filedialog.askopenfilename()
     path2 = filedialog.askopenfilename()
     img =  neuronowe.neuronowe_przetwarzarzanie(path1, path2)
 
-    #img.save("/temp/temp.jpg",".JPG")
+
+
+
+    img = ImageTk.PhotoImage(image=img)
+
+    label.config(image=img)
+    label.image = img
+    label.pack()
 
 
 
@@ -49,11 +49,16 @@ def neuronowe_zdj():
 
 
 #zapis zdjecia w wybranym formacie (jako że wcześniej otwieraliśmy zdjęcie w jakimś folderze, to automatyznie przeniesie nas do tego folderu)
-def zapisz_zdj(img,window):
+def zapisz_zdj(img,flaga):
     #zapisanie obrazu
-    cv2.imwrite(filedialog.asksaveasfilename(filetypes=(
-    ('JPEG', ('*.jpg', '*.jpeg', '*.jpe')), ('PNG', '*.png'), ('BMP', ('*.bmp', '*.jdib')), ('GIF', '*.gif'))), img)
-    window.destroy()
+    if flaga == 1:
+        cv2.imwrite(filedialog.asksaveasfilename(filetypes=(
+                 ('JPEG', ('*.jpg', '*.jpeg', '*.jpe')), ('PNG', '*.png'), ('BMP', ('*.bmp', '*.jdib')), ('GIF', '*.gif'))), img)
+
+    else:
+        img.save(filedialog.asksaveasfilename(filetypes=(
+                 ('JPEG', ('*.jpg', '*.jpeg', '*.jpe')), ('PNG', '*.png'), ('BMP', ('*.bmp', '*.jdib')), ('GIF', '*.gif'))), img)
+
 
 
 
@@ -76,6 +81,7 @@ label2.pack()
 #to jeszcze będzie dorobione
 button_neuronowy = Button(window, text="Załaduj zdjęcia", command=neuronowe_zdj)
 button_neuronowy.pack()
+
 
 
 

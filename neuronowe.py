@@ -55,7 +55,7 @@ def neuronowe_przetwarzarzanie(path1,path2):
   stylized_image = hub_model(tf.constant(content_image), tf.constant(style_image))[0]
   img = tensor_to_image(stylized_image)
 
-  img.save("temp/temp.jpg")
+
   return img
 
 
