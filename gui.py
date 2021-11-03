@@ -43,6 +43,7 @@ def neuronowe_zdj():
     path1 = filedialog.askopenfilename()
     path2 = filedialog.askopenfilename()
     img =  neuronowe.neuronowe_przetwarzarzanie(path1, path2)
+    image=img
 
 
 
@@ -52,7 +53,7 @@ def neuronowe_zdj():
     label.config(image=img)
     label.image = img
     label.pack()
-    button_zapis.configure(text="Zapisz zdjęcie neuronowego transferu stylów", command=lambda: zapisz_zdj(img, flaga))
+    button_zapis.configure(text="Zapisz zdjęcie neuronowego transferu stylów", command=lambda: zapisz_zdj(image, flaga))
     button_zapis.pack()
 
 
@@ -64,14 +65,15 @@ def zapisz_zdj(img,flaga):
 
     path=filedialog.asksaveasfilename(filetypes=(
         ('JPEG', ('*.jpg', '*.jpeg', '*.jpe')), ('PNG', '*.png'), ('BMP', ('*.bmp', '*.jdib')), ('GIF', '*.gif')), defaultextension=".jpg")
-    print(path)
+
     #zapisanie obrazu
     if flaga == 1:
 
         cv2.imwrite(path, img)
 
     if flaga == 2:
-        img.save(path, img)
+        img.save(path)
+
 
 
 
