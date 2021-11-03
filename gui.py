@@ -4,7 +4,6 @@ import PIL
 import cv2
 import face_detec
 import  neuronowe
-import  numpy as np
 from PIL import Image, ImageTk
 from tkinter import *
 from tkinter import filedialog
@@ -67,6 +66,7 @@ def zapisz_zdj(img,flaga):
         ('JPEG', ('*.jpg', '*.jpeg', '*.jpe')), ('PNG', '*.png'), ('BMP', ('*.bmp', '*.jdib')), ('GIF', '*.gif')), defaultextension=".jpg")
 
     #zapisanie obrazu
+
     if flaga == 1:
 
         cv2.imwrite(path, img)
@@ -94,11 +94,11 @@ button_zdjecie.pack()
 label2 = tkinter.Label(window, text="Neuronowy transfer stylów ")
 label2.pack()
 
-#to jeszcze będzie dorobione
+
 button_neuronowy = Button(window, text="Załaduj zdjęcia", command=neuronowe_zdj)
 button_neuronowy.pack()
 
-label.pack();
+label.pack()
 
 
 

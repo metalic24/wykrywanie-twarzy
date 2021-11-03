@@ -36,6 +36,7 @@ def camera():
             img =  cv2.resize(img, (a, b))
 
             #zamiana kanału alfa na obraz
+            #przerobiony kod z wątku https://stackoverflow.com/questions/14063070/overlay-a-smaller-image-on-a-larger-image-python-opencv
             alpha_img = img[:, :, 3] / 255.0
             alpha_frame = 1.0 - alpha_img
             for c in range(0, 3):
@@ -69,6 +70,7 @@ def zdjecie(path):
         b = (bottom - top)
         img = cv2.resize(img, (a, b))
 
+        #przerobiony kod z wątku https://stackoverflow.com/questions/14063070/overlay-a-smaller-image-on-a-larger-image-python-opencv
         #usunięcie kanału alfa
         alpha_img = img[:, :, 3] / 255.0
         alpha_image = 1.0 - alpha_img

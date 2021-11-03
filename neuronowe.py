@@ -4,6 +4,7 @@ import os
 import tensorflow as tf
 # Load compressed models from tensorflow_hub
 os.environ['TFHUB_MODEL_LOAD_FORMAT'] = 'COMPRESSED'
+#ta linijka może być inna dla innych procesorów
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 import matplotlib as mpl
@@ -51,6 +52,7 @@ def neuronowe_przetwarzarzanie(path1,path2):
   style_image = load_img(style_path)
 
   import tensorflow_hub as hub
+  #transfer stylów
   hub_model = hub.load('https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2')
   stylized_image = hub_model(tf.constant(content_image), tf.constant(style_image))[0]
   img = tensor_to_image(stylized_image)

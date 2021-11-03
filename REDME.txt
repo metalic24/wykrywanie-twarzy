@@ -1,0 +1,41 @@
+Jak korzystać z programu:
+1. uruchamiamy skrypt gui.py
+2. wybieramy opcję
+    2a. zamiana twarzy live:
+    Kiedy mamy podłączoną kamerkę możemy uruchomić zamianę twarzy live. Uruchomi się kolejne okno w którym wyświetli się obraz z kamerki.
+    Chwilkę trzeba zaczekać (zależnie od sprzętu). 
+    Kiedy nie mamy podłączonej kamerki, to w konsoli wyświetli sie komunikat o nieudanej próbie włączenia kamerki.
+    Zakończenie podmiany twarzy live następuje po kliknięcu klawisza "q"
+
+    2b. zamiana twarzy ze zdjęcia
+
+    Po kliknieciu przycisku uruchomi nam się okno dialogowe, w którym możemy wybrać zdjęcie, na którym zostanę podmienione twarze na buzię myszki miki.
+    Kiedy załaduje nam się obraz, to pojawi on się na oknie głównym, a wraz z nim przycisk do zapisu.
+    Jak bedziemy chcięli zapisać obraz, to klikamy na przycisk. Otworzy nam się wtedy okno dialogowe, które zapyta nas w jakim miejscu oraz pod jaką nazwą i formatem
+    chcemy zapisać zdjęcie. Domyślnie jest to .jpg
+
+    2c. Neuronowy transfer plików
+
+    Po kliknięcu na przycisk ukarze nam się pierwsze okno, w któym wybieramy zdjęcie do przeróbki. Po wybraniu otworzy się nowe okno dialogowe, w którym wybieramy format
+    stylu. W katalogu głównym zamieściłem zdjęcie noc.jpg, które jest zdjęciem obrazu Gwiaździstej nocy Vincenta van Gogh'a, który jest bardzo fajnym przykładem formatu stylu.
+    Podobnie jak przy zamianie twarzy ze zdjęcia przerobiony obraz pojawi się w głównym oknie a pod nim przycisk do zapisu. Tak samo otworzy się okno dialogowe,
+    w kórym będziemy mogli wybrać miejsce, nazwę i format zapisu.
+    Czasami bedzie trzeba chwilkę zaczekać zanim pojawi się zdjęcie.
+    Nie wiem jak to będzie wyglądało przy komputerze z GPU, ponieważ u mnie jest zainstalowany tensorflow  w wersji CPU. 
+
+3.zakończenie programu
+    zakończenie programu odbywa się poprzez zamknięcie głównego okna przyciskiem "X".
+
+
+Pliki:
+    gui.py:
+    jest w nim zapisany skrypt do obsługi GUI 
+
+    face_detect.py:
+    są w nim funkcjie do zamiany twarzy ze zdjecia oraz do zamiany twarzy live 
+
+    neuronowe.py:
+    są w nim funkcjie odpowiadające za neuronowy transfer plików
+
+    myszka.png:
+    przerobione zdjęcie do podmiany twarzy.
